@@ -66,3 +66,16 @@ app.listen(port, function() {
         '\n__dirname = ' + __dirname  +
         '\nprocess.cwd = ' + process.cwd());
 });
+
+
+// var https = require('https');
+// var fs = require('fs');
+
+// var options = {
+//     key: fs.readFileSync('./key.pem')
+//     cert: fs.readFileSync('./cert.pem')
+// };
+
+// https.createServer(options,app).listen(port,function(){
+//     console.log('env= '+app.get('env'));
+// })
