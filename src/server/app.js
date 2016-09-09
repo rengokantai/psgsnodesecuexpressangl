@@ -11,7 +11,17 @@ var logger = require('morgan');
 var port = process.env.PORT || 8001;
 var four0four = require('./utils/404')();
 
+var lusca = require('lusca');
+
 var environment = process.env.NODE_ENV;
+
+app.use(lusca.csp({
+    policy:{
+        'default-src':'\'self\'',
+        'style-src':'\'self\'',
+        'img-src':'\'self\' data:'
+    }
+}));
 
 app.use(favicon(__dirname + '/favicon.ico'));
 app.use(bodyParser.urlencoded({extended: true}));

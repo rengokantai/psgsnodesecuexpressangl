@@ -27,7 +27,7 @@ function search(req, res, next) {
 
     // For demo purposes we're just going to send back the search term received
     console.log(req.query.searchTerm);
-    res.status(200).send(xssFilters.inHTMLData(req.query.searchTerm);
+    res.status(200).send(xssFilters.inHTMLData(req.query.searchTerm));
 }
 
 function getProfile(req, res, next) {
