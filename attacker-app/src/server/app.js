@@ -16,6 +16,10 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(logger('dev'));
 
+var headerCheck = require('./utils/header-check');
+app.use(headerCheck([
+    'https://localhost:8001']));
+
 app.use('/api', require('./routes'));
 
 console.log('About to crank up node');
