@@ -25,11 +25,14 @@ app.use(lusca.csrf({
     angular: true
 }));
 
+app.use(lusca.xframe('DENY')); //If this is 'SAMEORIGIN' ,then frame-ancestors should be '\'self\''
+
 app.use(lusca.csp({
     policy:{
         'default-src':'\'self\'',
         'style-src':'\'self\'',
-        'img-src':'\'self\' data:'
+        'img-src':'\'self\' data:',
+        'frame-ancestors':'\'none\''
     }
 }));
 
