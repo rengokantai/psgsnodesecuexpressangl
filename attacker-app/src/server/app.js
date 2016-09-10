@@ -9,38 +9,16 @@ var logger = require('morgan');
 var port = process.env.PORT || 8001;
 var four0four = require('./utils/404')();
 
-app.disable('x-powered-by');
-var cookieParser = require('cookie-parser');
-
 var environment = process.env.NODE_ENV;
 
-var lusca = require('lusca');
-var session = require('express-session');
 
-app.use(session({
-    secret: 'abc'
-}));
-
-app.use(lusca.csrf({
-    angular: true
-}));
-
-app.use(lusca.csp({
-    policy: {
-        'default-src': '\'self\'',
-        'style-src': '\'self\'',
-        'img-src': '\'self\' data:'
-    }
-}));
 
 app.use(favicon(__dirname + '/favicon.ico'));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(logger('dev'));
 
-// var headerCheck = require('./utils/header-check');
-// app.use(headerCheck([
-//     'https://localhost:8001']));
+
 
 app.use('/api', require('./routes'));
 
